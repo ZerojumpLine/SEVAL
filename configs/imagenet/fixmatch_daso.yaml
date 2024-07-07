@@ -1,0 +1,46 @@
+ALGORITHM:
+  NAME: "DASO"
+  CONFIDENCE_THRESHOLD: 0.95
+  DARP:
+    APPLY: False
+  DASO:
+    WITH_DIST_AWARE: True
+    DIST_TEMP: 0.5
+    # blend pseudo-labels with fixed weight (applied only when WITH_DIST_AWARE is False).
+    INTERP_ALPHA: 0.5
+    PSA_LOSS_WEIGHT: 1.0  # loss weight for semantic alignment loss
+  ABC:
+    APPLY: False
+    DASO_PSEUDO_LABEL: True  # when abc is applied, apply DASO on pseudo-labels in abc pipeline
+
+MODEL:
+  NUM_CLASSES: 127
+  LOSS:
+    UNLABELED_LOSS: "CrossEntropyLoss"
+    UNLABELED_LOSS_WEIGHT: 1.0
+  DIST_ALIGN:
+    APPLY: False
+  NAME:
+    "ResNet50_cifar"
+  QUEUE:
+    FEAT_DIM: 2048
+
+DATASET:
+  BUILDER: "build_imagenet_dataset"
+  NAME: "imagenet"
+  ROOT: "./data/imagenet"
+
+  TRANSFORM:
+    STRONG_AUG: True
+
+SOLVER:
+  MAX_ITER: 100000
+  BASE_LR: 0.002
+  OPTIM_NAME: "Adam"
+  APPLY_SCHEDULER: True
+  LR_SCHEDULER_NAME: "WarmupMultiStepLR"
+  STEPS: (50000, 75000,)
+  GAMMA: 0.1
+  WARMUP_ITERS: 2500
+
+OUTPUT_DIR: "outputs/imagenet/fixmatch"

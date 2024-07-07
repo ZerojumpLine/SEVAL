@@ -1,0 +1,43 @@
+ALGORITHM:
+  NAME: "SEVAL"
+  SEVAL:
+    TH_CLS: 10
+    PI_CLS: 100
+    TH_START: 0.65
+    TH_END: 0.65
+    TH_EMA_DECAY: 0.9
+    PI_EMA_DECAY: 0.9
+    ESTIM:
+      APPLY: True
+
+PERIODS:
+  EVAL: 2500
+  LOG: 2500
+
+MODEL:
+  NUM_CLASSES: 100
+  LOSS:
+    UNLABELED_LOSS: "CrossEntropyLoss"
+    UNLABELED_LOSS_WEIGHT: 1.0
+  DIST_ALIGN:
+    APPLY: False
+
+DATASET:
+  BUILDER: "build_cifar100_dataset"
+  NAME: "cifar100"
+  ROOT: "./data/cifar100"
+  NUM_VALID: 5000
+  CIFAR100:
+    NUM_LABELED_HEAD: 150
+    IMB_FACTOR_L: 10
+    NUM_UNLABELED_HEAD: 300
+    IMB_FACTOR_UL: 10
+  REVERSE_UL_DISTRIBUTION: False
+
+  TRANSFORM:
+    STRONG_AUG: True
+
+SOLVER:
+  UNLABELED_BATCH_RATIO: 2
+
+OUTPUT_DIR: "outputs/cifar100/fixmatch"

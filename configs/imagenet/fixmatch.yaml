@@ -1,0 +1,35 @@
+ALGORITHM:
+  NAME: "FixMatch"
+  CONFIDENCE_THRESHOLD: 0.95
+  DARP:
+    APPLY: False
+
+MODEL:
+  NUM_CLASSES: 127
+  LOSS:
+    UNLABELED_LOSS: "CrossEntropyLoss"
+    UNLABELED_LOSS_WEIGHT: 1.0
+  DIST_ALIGN:
+    APPLY: False
+  NAME:
+    "ResNet50_cifar"
+
+DATASET:
+  BUILDER: "build_imagenet_dataset"
+  NAME: "imagenet"
+  ROOT: "./data/imagenet"
+
+  TRANSFORM:
+    STRONG_AUG: True
+
+SOLVER:
+  MAX_ITER: 100000
+  BASE_LR: 0.002
+  OPTIM_NAME: "Adam"
+  APPLY_SCHEDULER: True
+  LR_SCHEDULER_NAME: "WarmupMultiStepLR"
+  STEPS: (50000, 75000,)
+  GAMMA: 0.1
+  WARMUP_ITERS: 2500
+
+OUTPUT_DIR: "outputs/imagenet/fixmatch"

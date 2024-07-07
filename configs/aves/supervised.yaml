@@ -1,0 +1,43 @@
+ALGORITHM:
+  NAME: "Supervised"
+  LOGIT_ADJUST:
+    APPLY: False
+    TAU: 1.0
+
+PERIODS:
+  EVAL: 500
+  LOG: 500
+
+MODEL:
+  NUM_CLASSES: 200
+  LOSS:
+    WITH_LABELED_COST_SENSITIVE: False
+    WARMUP_ITERS: 200000  # deferred reweighting (LDAM)
+    COST_SENSITIVE:
+      LOSS_OVERRIDE: "LDAM"
+      BETA: 0.999
+  NAME:
+    "ResNet"
+  EMA_DECAY: 0.9
+
+DATASET:
+  BUILDER: "build_aves_dataset"
+  NAME: "aves"
+  ROOT: "./data/semi_fgvc"
+  RESOLUTION: 224
+  AVES:
+    UL_SOURCE: "in"
+
+SOLVER:
+  MAX_ITER: 45000
+  IMS_PER_BATCH: 32
+  BASE_LR: 0.025
+  APPLY_SCHEDULER: True
+  LR_SCHEDULER_NAME: "WarmupMultiStepLR"
+  STEPS: (15000, 30000,)
+  GAMMA: 0.1
+  WARMUP_ITERS: 2500
+  SGD:
+    WEIGHT_DECAY: 0.0003
+
+OUTPUT_DIR: "outputs/aves/supervised"
