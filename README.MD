@@ -116,6 +116,7 @@ If you find our work beneficial for your projects, please kindly consider citing
 @article{li2024semi,
   title={Learning Label Refinement and Threshold Adjustment for Imbalanced Semi-Supervised Learning},
   author={Li, Zeju and Zheng, Ying-Qiu and Chen, Chen and Jbabdi, Saad},
+  journal={arXiv preprint arXiv:2407.05370},
   year={2024}
 }
 ```
