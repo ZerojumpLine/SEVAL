@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[🏠 Home Page](https://zerojumpline.github.io/seval)
+[🏠 Home Page](https://zerojumpline.github.io/SEVAL)
 
 </div>
 
