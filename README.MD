@@ -113,10 +113,10 @@ This code borrows from [DASO](https://github.com/ytaek-oh/daso).
 If you find our work beneficial for your projects, please kindly consider citing it:
 
 ```
-@article{li2024semi,
+@article{li2026semi,
   title={Learning Label Refinement and Threshold Adjustment for Imbalanced Semi-Supervised Learning},
   author={Li, Zeju and Zheng, Ying-Qiu and Chen, Chen and Jbabdi, Saad},
-  journal={arXiv preprint arXiv:2407.05370},
-  year={2024}
+  journal={Transactions on Machine Learning Research},
+  year={2026}
 }
 ```
