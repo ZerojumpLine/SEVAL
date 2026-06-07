@@ -1,10 +1,6 @@
 # SEVAL
 
-<div align="center">
-
-[🏠 Home Page](https://zerojumpline.github.io/SEVAL)
-
-</div>
+[![Page](https://img.shields.io/badge/Project-Page-green.svg)](https://zerojumpline.github.io/SEVAL)
 
 ## Introduction
 
